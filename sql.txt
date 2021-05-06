@@ -1,0 +1,65 @@
+// Table - Person
+
+create table person(
+    person_id serial primary key,
+    name varchar(200),
+    age integer,
+    height integer,
+    city varchar(200),
+    favorite_color varchar(200)
+);
+
+insert into person
+(name, age, height, city, favorite_color)
+values
+('Cindy Smith', 28, 130, 'Allentown', 'red'),
+('Johm Smith', 34, 180, 'Philly', 'blue'),
+('Louis Matthews', 99, 154, 'Dallas', 'green'),
+('Rosemary Phillips', 57, 144, 'Pigeon Forge', 'pink'),
+('Annie Greene', 15, 121, 'Cedar Rapids', 'orange');
+
+select * from person
+order in height desc;
+
+select * from person 
+order in height asc;
+
+select * from person
+order in age desc;
+
+select * from person
+where age > 20;
+
+select * from person
+where age = 18;
+
+select * from person
+where age < 20 or age > 30;
+
+select * from person
+where age != 27;
+
+select * from person
+where favorite_color != 'red';
+
+select * from person 
+where favorite_color != 'red' and favorite_color != 'blue';
+
+select * from person 
+where favorite_color = 'orange' or favorite_color = 'green';
+
+select * from person 
+where favorite_color in ('orange', 'green', 'blue');
+
+select * from person 
+where favorite_color in ('yellow', 'purple');
+
+// Table - Orders
+
+create table orders(
+    order_id serial primary key,
+    person_id integer,
+    product_name varchar(200),
+    product_price integer,
+    quantity integer
+);
