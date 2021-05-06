@@ -60,6 +60,77 @@ create table orders(
     order_id serial primary key,
     person_id integer,
     product_name varchar(200),
-    product_price integer,
+    product_price numeric,
     quantity integer
 );
+
+insert into orders
+(person_id, product_name, product_price, quantity)
+values
+(1, 'apples', 5, 3),
+(5, 'chicken', 6.75, 2),
+(3, 'peanut butter and jelly', 2.50, 1),
+(1, 'wedding soup', 4.00, 1),
+(4, 'yogurt', 1.45, 1);
+
+select * from orders;
+
+select sum(quantity) from orders;
+
+select sum(product_price*quantity) from orders
+where person_id = 1;
+
+// Table - artist
+
+insert into artist
+(name)
+values
+('Egypt Central'),
+('Arianna Grande'),
+('Brantley Gilbert');
+
+select * from artist
+order by name desc limit 10;
+
+select * from artist
+order by name asc limit 5;
+
+select * from artist
+where name like 'Black%';
+
+
+select * from artist
+where name like '%Black%';
+
+// Table - employee
+
+select first_name, last_name from employee
+where city = 'Calgary';
+
+select max(birth_date) from employee;
+
+select min(birth_date) from employee;
+
+select * from employee
+where reports_to = 2;
+
+select count(*) from employee 
+where city = 'Lethbridge';
+
+// Table - invoice
+
+select count(*) from invoice
+where billing_country = 'USA';
+
+select max(total) from invoice;
+
+select min(total) from invoice;
+
+select * from invoice
+where total > 5;
+
+select count(*) from invoice
+where total < 5;
+
+select count(*) from invoice
+where billing_state in ('CA', 'TX', 'AZ');
